@@ -107,7 +107,7 @@ npm start
 
 ## License / الحقوق
 
-© 2026 على تكه. **All rights reserved** – see [LICENSE](LICENSE). The repository is published for viewing and academic evaluation only.  
+© 2026 على تكّة (Alatekka). **All rights reserved** – see [LICENSE](LICENSE). The repository is published for viewing and academic evaluation only.  
 The New Ismailia National University name, logo and photos belong to the university and are not covered by this licence.
 
-© 2026 على تكه. **جميع الحقوق محفوظة** – راجع ملف [LICENSE](LICENSE).
+© 2026 على تكّة (Alatekka). **جميع الحقوق محفوظة** – راجع ملف [LICENSE](LICENSE).

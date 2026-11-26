@@ -45,7 +45,7 @@ export function PublicLayout() {
         </nav>
       </header>
       <main id="main"><Outlet /></main>
-      <footer className="footer"><span className="footer-uni"><img src="/brand/ninu-logo-192.png" alt="" /> {t.university} · {t.brand} – {t.tagline}</span><span className="muted">© 2026 على تكه · {t.rights} · {t.demoBanner}</span></footer>
+      <footer className="footer"><span className="footer-uni"><img src="/brand/ninu-logo-192.png" alt="" /> {t.university} · {t.brand} – {t.tagline}</span><span className="muted">© 2026 على تكّة (Alatekka) · {t.rights} · {t.demoBanner}</span></footer>
     </div>);
 }
 
