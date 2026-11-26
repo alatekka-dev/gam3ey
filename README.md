@@ -2,6 +2,10 @@
 
 Graduation project prototype: one responsive web platform that brings academic records, course registration, lectures with a course-scoped study assistant, smart notifications, a campus guide with a map, project teams and career opportunities together, with dashboards for students, faculty and administration.
 
+## 🌐 Live demo: **https://gam3ey-ninu.onrender.com**
+
+Free Render instance (Frankfurt). The first visit after a quiet period takes about a minute while the server wakes up; demo data is reset on every restart.
+
 > **Demo data only.** Every person, course and record in this prototype is fictional and labelled as demo. The platform is not connected to any real university system.
 
 ---
@@ -86,6 +90,8 @@ The assistant answers **only** from published lectures of the course the student
 ---
 
 ## تشغيل المشروع (بالعربي)
+
+**النسخة التجريبية على الإنترنت:** https://gam3ey-ninu.onrender.com (أول فتح بعد فترة سكون يأخذ حوالي دقيقة).
 
 المطلوب فقط **Node.js إصدار 20 أو أحدث**. لا يحتاج المشروع إلى قاعدة بيانات خارجية أو بريد أو مفاتيح؛ قاعدة البيانات PostgreSQL مدمجة داخل مجلد المشروع.
 
