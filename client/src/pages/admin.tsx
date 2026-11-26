@@ -36,7 +36,7 @@ export function AdminChanges() {
       <ErrorNote error={err} />{ok && <div className="note note-good">{ok}</div>}
       <StateView loading={loading && !data} error={error} empty={!data?.changeRequests.length} onRetry={reload}>
         <div className="table-wrap card"><table>
-          <thead><tr><th>{t.courses}</th><th>{t.current}</th><th>{t.proposed}</th><th>{t.reason}</th><th>{t.requestedBy}</th><th>{t.status}</th><th></th></tr></thead>
+          <thead><tr><th>{t.course}</th><th>{t.current}</th><th>{t.proposed}</th><th>{t.reason}</th><th>{t.requestedBy}</th><th>{t.status}</th><th></th></tr></thead>
           <tbody>{data?.changeRequests.map((c: any) => (
             <tr key={c.id}><td><b>{c.code}-{c.label}</b></td>
               <td>{t.days[c.old_day]} <span dir="ltr">{c.old_start}–{c.old_end}</span><br /><span className="small muted">{L(c, 'old_location')}</span></td>
@@ -96,7 +96,7 @@ export function AdminTerms() {
       <div className="card">
         <h2>{t.schedule}</h2>
         <StateView loading={sections.loading && !sections.data} error={sections.error}>
-          <div className="table-wrap"><table><thead><tr><th>{t.courses}</th><th>{t.day}</th><th>{t.time}</th><th>{t.location}</th><th>{t.instructor}</th><th>{t.enrolled}</th></tr></thead>
+          <div className="table-wrap"><table><thead><tr><th>{t.course}</th><th>{t.day}</th><th>{t.time}</th><th>{t.location}</th><th>{t.instructor}</th><th>{t.enrolled}</th></tr></thead>
             <tbody>{sections.data?.sections.map((x: any) => <tr key={x.id}><td><b>{x.code}-{x.label}</b> {L(x, 'title')}</td><td>{t.days[x.day]}</td><td dir="ltr">{x.start}–{x.end}</td>
               <td>{L(x, 'location')}</td><td>{L(x, 'faculty')}</td><td>{x.enrolled}/{x.capacity}</td></tr>)}</tbody></table></div>
         </StateView>
@@ -132,7 +132,7 @@ function RecordModal({ student, onClose }: { student: any; onClose: () => void }
   };
   return (
     <Modal title={`${t.record}: ${L(student, 'name')}`} onClose={onClose}>
-      <div className="table-wrap"><table><thead><tr><th>{t.term}</th><th>{t.courses}</th><th>{t.status}</th><th>{t.grade}</th><th></th></tr></thead>
+      <div className="table-wrap"><table><thead><tr><th>{t.term}</th><th>{t.course}</th><th>{t.status}</th><th>{t.grade}</th><th></th></tr></thead>
         <tbody>{data?.record.map((r: any) => <tr key={r.id}><td>{r.term}</td><td>{r.code}</td><td>{r.status}</td><td>{r.grade ?? '—'}</td>
           <td>{r.status !== 'dropped' && <button className="btn btn-ghost btn-sm" onClick={() => { setEdit(r); setGrade(r.grade ?? 'A'); }}>{t.changeGrade}</button>}</td></tr>)}</tbody></table></div>
       {edit && <div className="stack sub-card">

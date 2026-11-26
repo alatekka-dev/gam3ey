@@ -6,7 +6,7 @@ export type Lang = 'ar' | 'en';
 const ar = {
   brand: 'جامعي', university: 'جامعة الإسماعيلية الجديدة الأهلية', universityShort: 'NINU', uniSince: 'جامعة أهلية تأسست عام 2022', campusTitle: 'حرم جامعي حديث… وخدمات رقمية تليق به', campusText: 'منصة جامعي نموذج أولي مقترح لتوحيد الخدمات الرقمية لطلاب وأعضاء هيئة التدريس وإدارة جامعة الإسماعيلية الجديدة الأهلية في مكان واحد.', v1: 'خدمات رئيسية', v2: 'مسار عمل موثق', v3: 'لوحات حسب الدور', v4: 'عربي / English', welcomeBack: 'أهلًا بك في بوابتك الجامعية', officialLinks: 'روابط رسمية', rights: 'جميع الحقوق محفوظة', officialSite: 'الموقع الرسمي للجامعة', eServices: 'الخدمات الإلكترونية الحالية', complaints: 'الاستفسارات والشكاوى', cnu: 'صفحة الجامعة بمجلس الجامعات الأهلية', facts: 'حقائق سريعة', fact1: 'قرار جمهوري رقم 427 لسنة 2022', fact2: '29 فدانًا شرق قناة السويس', fact3: '8 كليات و3 قطاعات تعليمية', fact4: 'منبثقة من جامعة قناة السويس', officialNote: 'روابط خارجية للمواقع الرسمية؛ منصة جامعي نموذج أولي غير تابع رسميًا للجامعة.', loginSub: 'سجّل الدخول بحسابك الجامعي للوصول لخدماتك.', tagline: 'البوابة الجامعية الذكية الموحدة',
   home: 'الرئيسية', about: 'من نحن', services: 'الخدمات', guide: 'دليل الجامعة', login: 'تسجيل الدخول', logout: 'تسجيل الخروج',
-  dashboard: 'لوحة التحكم', overview: 'الملخص الأكاديمي', registration: 'تسجيل المقررات', courses: 'مقرراتي', allCourses: 'المقررات', notifications: 'الإشعارات',
+  dashboard: 'لوحة التحكم', overview: 'الملخص الأكاديمي', registration: 'تسجيل المقررات', courses: 'مقرراتي', allCourses: 'المقررات', course: 'المقرر', notifications: 'الإشعارات',
   teams: 'فرق المشاريع', careers: 'المسارات المهنية', myTeams: 'فريقي وطلباتي', newTeam: 'إنشاء فريق',
   facultyHome: 'مقرراتي التدريسية', changeRequests: 'طلبات تعديل المواعيد', adminHome: 'لوحة الإدارة', terms: 'الفصول والإعدادات',
   records: 'السجلات الأكاديمية', kb: 'قاعدة المعرفة', locations: 'المواقع والخريطة', announce: 'الإعلانات', audit: 'سجل التدقيق', outbox: 'البريد الصادر',
@@ -72,7 +72,7 @@ type Dict = typeof ar;
 const en: Dict = {
   brand: 'GAM3EY', university: 'New Ismailia National University', universityShort: 'NINU', uniSince: 'A national university established in 2022', campusTitle: 'A modern campus deserves modern digital services', campusText: 'GAM3EY is a proposed prototype that unifies the digital services of New Ismailia National University students, faculty and administration in one place.', v1: 'core services', v2: 'documented workflows', v3: 'role dashboards', v4: 'Arabic / English', welcomeBack: 'Welcome to your university portal', officialLinks: 'Official links', rights: 'All rights reserved', officialSite: 'Official university website', eServices: 'Current electronic services', complaints: 'Inquiries and complaints', cnu: 'University page at the Council of National Universities', facts: 'Quick facts', fact1: 'Presidential Decree No. 427 of 2022', fact2: '29 feddans on the east bank of the Suez Canal', fact3: '8 faculties in 3 academic sectors', fact4: 'Emerged from Suez Canal University', officialNote: 'External links to official websites; GAM3EY is a prototype and is not an official university service.', loginSub: 'Sign in with your university account to reach your services.', tagline: 'The smart unified university portal',
   home: 'Home', about: 'About', services: 'Services', guide: 'Campus guide', login: 'Sign in', logout: 'Sign out',
-  dashboard: 'Dashboard', overview: 'Academic overview', registration: 'Course registration', courses: 'My courses', allCourses: 'Courses', notifications: 'Notifications',
+  dashboard: 'Dashboard', overview: 'Academic overview', registration: 'Course registration', courses: 'My courses', allCourses: 'Courses', course: 'Course', notifications: 'Notifications',
   teams: 'Project teams', careers: 'Career & skills', myTeams: 'My team & requests', newTeam: 'Create a team',
   facultyHome: 'My teaching', changeRequests: 'Schedule change requests', adminHome: 'Administration', terms: 'Terms & settings',
   records: 'Academic records', kb: 'Knowledge base', locations: 'Locations & map', announce: 'Announcements', audit: 'Audit log', outbox: 'Email outbox',
@@ -90,7 +90,7 @@ const en: Dict = {
   days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   regWindow: 'Registration window', regOpen: 'Open', regClosed: 'Closed', until: 'until', dropDeadline: 'Drop deadline',
   available: 'Available', registered: 'Registered', passed: 'Passed', full: 'Full', prerequisite_missing: 'Missing prerequisite',
-  seatsLeft: 'seats left', select: 'Select', selected: 'Selected', checkSelection: 'Check selection', confirmRegistration: 'Confirm registration',
+  seatsLeft: 'seat(s) left', select: 'Select', selected: 'Selected', checkSelection: 'Check selection', confirmRegistration: 'Confirm registration',
   selectionOk: 'Your selection is valid. Review it, then confirm.', totalAfter: 'Total credit hours after registration', currentlyRegistered: 'Registered courses',
   drop: 'Drop course', dropTitle: 'Confirm dropping the course', dropImpact: 'Credit hours will become', belowMin: 'below the minimum', dropConfirm: 'Yes, drop the course',
   limits: 'Minimum and maximum',

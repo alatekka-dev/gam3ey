@@ -13,7 +13,7 @@ export function FacultyHome() {
       <PageHead title={t.facultyHome} />
       <StateView loading={loading} error={error} empty={!data?.sections.length} onRetry={reload}>
         <div className="table-wrap card"><table>
-          <thead><tr><th>{t.courses}</th><th>{t.day}</th><th>{t.time}</th><th>{t.location}</th><th>{t.enrolled}</th><th>{t.lectures}</th><th></th></tr></thead>
+          <thead><tr><th>{t.course}</th><th>{t.day}</th><th>{t.time}</th><th>{t.location}</th><th>{t.enrolled}</th><th>{t.lectures}</th><th></th></tr></thead>
           <tbody>{data?.sections.map((s: any) => (
             <tr key={s.id}><td><b>{s.code}-{s.label}</b> {L(s, 'title')}</td><td>{t.days[s.day]}</td><td dir="ltr">{s.start}–{s.end}</td><td>{L(s, 'location')}</td>
               <td>{s.enrolled}/{s.capacity}</td><td>{s.lectures}</td><td><Link className="btn btn-ghost btn-sm" to={`/faculty/sections/${s.id}`}>{t.open}</Link></td></tr>))}</tbody>

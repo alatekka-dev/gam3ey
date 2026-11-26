@@ -37,7 +37,7 @@ export function Overview() {
             <h2>{t.schedule}</h2>
             <StateView empty={!data.courses.length}>
               <div className="table-wrap"><table>
-                <thead><tr><th>{t.courses}</th><th>{t.day}</th><th>{t.time}</th><th>{t.location}</th><th>{t.instructor}</th><th>{t.creditHours}</th><th>{t.grade}</th></tr></thead>
+                <thead><tr><th>{t.course}</th><th>{t.day}</th><th>{t.time}</th><th>{t.location}</th><th>{t.instructor}</th><th>{t.creditHours}</th><th>{t.grade}</th></tr></thead>
                 <tbody>{data.courses.map((c: any) => (
                   <tr key={c.enrollment_id}>
                     <td><b>{c.code}</b> {L(c, 'title')}</td><td>{t.days[c.day]}</td><td dir="ltr">{c.start}–{c.end}</td>
@@ -101,7 +101,7 @@ export function Registration() {
           <div className="card">
             <h2>{t.available}</h2>
             <div className="table-wrap"><table>
-              <thead><tr><th></th><th>{t.courses}</th><th>{t.day}</th><th>{t.time}</th><th>{t.location}</th><th>{t.creditHours}</th><th>{t.status}</th></tr></thead>
+              <thead><tr><th></th><th>{t.course}</th><th>{t.day}</th><th>{t.time}</th><th>{t.location}</th><th>{t.creditHours}</th><th>{t.status}</th></tr></thead>
               <tbody>{data.offerings.map((s: any) => {
                 const can = s.status === 'available' && data.term.regOpen;
                 return (
@@ -189,8 +189,8 @@ export function CoursePage() {
             <div className="chat" aria-live="polite">
               {chat.map((m, i) => (
                 <div key={i}>
-                  <div className="bubble me">{m.q}</div>
-                  <div className={`bubble bot ${m.r.status}`}>
+                  <div className="bubble me" dir="auto">{m.q}</div>
+                  <div className={`bubble bot ${m.r.status}`} dir="auto">
                     {m.r.status === 'answered' ? <>
                       <p>{m.r.answer}</p>
                       <details><summary>{t.sources} ({m.r.sources.length}) · <span className="muted">{m.r.mode === 'llm' ? t.modeLlm : t.modeExtractive}</span></summary>

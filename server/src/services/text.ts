@@ -66,9 +66,21 @@ export function bestSentences(question: string, texts: string[], n = 3): string[
   let order = 0;
   for (const t of texts) for (const s of splitSentences(t)) {
     const st = new Set(terms(s));
-    const score = q.filter((x) => [...st].some((y) => y.startsWith(x) || x.startsWith(y))).length;
+    // Exact term matches weigh double; prefix matches (inflected forms) count once.
+    let score = q.reduce((sum, x) => sum + (st.has(x) ? 2 : [...st].some((y) => y.startsWith(x) || x.startsWith(y)) ? 1 : 0), 0);
+    // Definition bonus: the sentence opens with the asked-about terms ("A primary key is…").
+    const lead = terms(s).slice(0, Math.min(2, q.length));
+    if (score > 0 && lead.length && lead.every((x) => q.includes(x))) score += 2;
     scored.push({ s, score, order: order++ });
   }
-  return scored.filter((x) => x.score > 0).sort((a, b) => b.score - a.score || a.order - b.order)
+  // Prefer sentences written in the same script as the question (Arabic vs Latin).
+  const isAr = (s: string) => /[؀-ۿ]/.test(s.replace(/[A-Za-z0-9]/g, '')) && (s.match(/[؀-ۿ]/g)?.length ?? 0) > (s.match(/[A-Za-z]/g)?.length ?? 0);
+  const sameScript = scored.filter((x) => x.score > 0 && isAr(x.s) === isAr(question));
+  const pool = sameScript.length ? sameScript : scored.filter((x) => x.score > 0);
+  if (!pool.length) return [];
+  // Keep only sentences close to the best match, so answers stay focused.
+  const best = Math.max(...pool.map((x) => x.score));
+  return pool.filter((x) => x.score >= Math.max(1, best - (best >= 3 ? 1 : 0)))
+    .sort((a, b) => b.score - a.score || a.order - b.order)
     .slice(0, n).sort((a, b) => a.order - b.order).map((x) => x.s);
 }
