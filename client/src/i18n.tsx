@@ -1,0 +1,153 @@
+/** Arabic (RTL, default) and English (LTR) interface strings. */
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+
+export type Lang = 'ar' | 'en';
+
+const ar = {
+  brand: 'جامعي', university: 'جامعة الإسماعيلية الجديدة الأهلية', universityShort: 'NINU', uniSince: 'جامعة أهلية تأسست عام 2022', campusTitle: 'حرم جامعي حديث… وخدمات رقمية تليق به', campusText: 'منصة جامعي نموذج أولي مقترح لتوحيد الخدمات الرقمية لطلاب وأعضاء هيئة التدريس وإدارة جامعة الإسماعيلية الجديدة الأهلية في مكان واحد.', v1: 'خدمات رئيسية', v2: 'مسار عمل موثق', v3: 'لوحات حسب الدور', v4: 'عربي / English', welcomeBack: 'أهلًا بك في بوابتك الجامعية', officialLinks: 'روابط رسمية', rights: 'جميع الحقوق محفوظة', officialSite: 'الموقع الرسمي للجامعة', eServices: 'الخدمات الإلكترونية الحالية', complaints: 'الاستفسارات والشكاوى', cnu: 'صفحة الجامعة بمجلس الجامعات الأهلية', facts: 'حقائق سريعة', fact1: 'قرار جمهوري رقم 427 لسنة 2022', fact2: '29 فدانًا شرق قناة السويس', fact3: '8 كليات و3 قطاعات تعليمية', fact4: 'منبثقة من جامعة قناة السويس', officialNote: 'روابط خارجية للمواقع الرسمية؛ منصة جامعي نموذج أولي غير تابع رسميًا للجامعة.', loginSub: 'سجّل الدخول بحسابك الجامعي للوصول لخدماتك.', tagline: 'البوابة الجامعية الذكية الموحدة',
+  home: 'الرئيسية', about: 'من نحن', services: 'الخدمات', guide: 'دليل الجامعة', login: 'تسجيل الدخول', logout: 'تسجيل الخروج',
+  dashboard: 'لوحة التحكم', overview: 'الملخص الأكاديمي', registration: 'تسجيل المقررات', courses: 'مقرراتي', allCourses: 'المقررات', notifications: 'الإشعارات',
+  teams: 'فرق المشاريع', careers: 'المسارات المهنية', myTeams: 'فريقي وطلباتي', newTeam: 'إنشاء فريق',
+  facultyHome: 'مقرراتي التدريسية', changeRequests: 'طلبات تعديل المواعيد', adminHome: 'لوحة الإدارة', terms: 'الفصول والإعدادات',
+  records: 'السجلات الأكاديمية', kb: 'قاعدة المعرفة', locations: 'المواقع والخريطة', announce: 'الإعلانات', audit: 'سجل التدقيق', outbox: 'البريد الصادر',
+  loading: 'جارٍ التحميل…', empty: 'لا توجد بيانات لعرضها بعد.', error: 'حدث خطأ', retry: 'إعادة المحاولة', save: 'حفظ', cancel: 'إلغاء',
+  confirm: 'تأكيد', back: 'رجوع', search: 'بحث', send: 'إرسال', close: 'إغلاق', open: 'فتح', edit: 'تعديل', publish: 'نشر', preview: 'معاينة',
+  demoBanner: 'نسخة تجريبية: كل البيانات المعروضة بيانات تجريبية موسومة وليست سجلات جامعية حقيقية.',
+  identifier: 'الرقم الجامعي أو البريد الجامعي', password: 'كلمة المرور', showPassword: 'إظهار', hidePassword: 'إخفاء',
+  forgot: 'نسيت كلمة المرور؟', forgotTitle: 'استعادة الحساب', sendLink: 'إرسال رابط الاستعادة', newPassword: 'كلمة المرور الجديدة',
+  resetTitle: 'تعيين كلمة مرور جديدة', passwordRule: '8 أحرف على الأقل وتحتوي على حرف ورقم',
+  demoAccounts: 'حسابات تجريبية', demoPassword: 'كلمة المرور لكل الحسابات التجريبية',
+  student: 'طالب', faculty: 'عضو هيئة تدريس', admin: 'الإدارة',
+  universityId: 'الرقم الجامعي', major: 'التخصص', year: 'السنة الدراسية', term: 'الفصل الدراسي', cgpa: 'المعدل التراكمي', termGpa: 'معدل الفصل',
+  earned: 'الساعات المكتسبة', credits: 'ساعة', creditHours: 'الساعات المعتمدة', grade: 'التقدير', schedule: 'الجدول الدراسي', location: 'المكان',
+  lastUpdated: 'آخر تحديث', resultsHidden: 'لم تُنشر نتائج هذا الفصل بعد.', showOnMap: 'على الخريطة', instructor: 'المحاضر', day: 'اليوم', time: 'الوقت',
+  days: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
+  regWindow: 'فترة التسجيل', regOpen: 'مفتوحة', regClosed: 'مغلقة', until: 'حتى', dropDeadline: 'آخر موعد للحذف',
+  available: 'متاح', registered: 'مسجل', passed: 'تم اجتيازه', full: 'مكتمل', prerequisite_missing: 'متطلب سابق ناقص',
+  seatsLeft: 'مقاعد متبقية', select: 'اختيار', selected: 'المختار', checkSelection: 'التحقق من الاختيارات', confirmRegistration: 'تأكيد التسجيل',
+  selectionOk: 'الاختيارات صالحة. راجعها ثم أكّد التسجيل.', totalAfter: 'إجمالي الساعات بعد التسجيل', currentlyRegistered: 'المقررات المسجلة',
+  drop: 'حذف المقرر', dropTitle: 'تأكيد حذف المقرر', dropImpact: 'الساعات ستصبح', belowMin: 'أقل من الحد الأدنى', dropConfirm: 'نعم، احذف المقرر',
+  limits: 'الحد الأدنى والأقصى',
+  lectures: 'المحاضرات', week: 'الأسبوع', attachments: 'الملفات', exercises: 'تدريبات اختيارية', download: 'تنزيل', checkAnswer: 'تحقق من الإجابة',
+  correct: 'إجابة صحيحة', wrong: 'إجابة غير صحيحة', modelAnswer: 'الإجابة النموذجية', notGraded: 'التدريب لا يؤثر على الدرجات الرسمية.',
+  assistant: 'مساعد الدراسة', assistantHint: 'اسأل عن محتوى هذا المقرر. الإجابة من المحاضرات المنشورة فقط مع ذكر المصدر.',
+  askPlaceholder: 'اكتب سؤالك…', sources: 'المصادر', summary: 'تلخيص المحاضرة', insufficient: 'الأدلة غير كافية', clarify: 'يحتاج توضيح',
+  modeLlm: 'نموذج لغوي', modeExtractive: 'استرجاع مباشر من المحاضرات',
+  markAllRead: 'تحديد الكل كمقروء', unread: 'غير مقروء', emailStatus: 'البريد',
+  guideAsk: 'اسأل دليل الجامعة', guidePlaceholder: 'مثال: إزاي أطلب إفادة قيد؟', findPlace: 'ابحث عن مبنى أو قاعة أو معمل', directions: 'الإرشادات',
+  floor: 'الدور', building: 'المبنى', mapNote: 'خريطة توضيحية تجريبية للحرم الجامعي.', reviewedOn: 'تاريخ المراجعة', contact: 'جهة التواصل',
+  teamTitle: 'اسم الفريق', description: 'الوصف', targetSize: 'العدد المستهدف (شاملًا المالك)', roles: 'الأدوار المطلوبة', skills: 'المهارات',
+  ownerRole: 'دورك في الفريق', commaHint: 'افصل بينها بفاصلة', members: 'الأعضاء', requestJoin: 'طلب انضمام', yourRole: 'الدور الذي تريده',
+  message: 'نبذة عن مهاراتك', pending: 'قيد المراجعة', accepted: 'مقبول', rejected: 'مرفوض', cancelled: 'ملغي', accept: 'قبول', reject: 'رفض',
+  recruiting: 'يستقبل أعضاء', closed: 'مغلق', closeRecruiting: 'إغلاق الاستقطاب', openRecruiting: 'فتح الاستقطاب', ownedTeams: 'فرق أملكها',
+  memberOf: 'فرق أنا عضو فيها', myRequests: 'طلباتي', requests: 'طلبات الانضمام', leave: 'مغادرة الفريق', owner: 'المالك',
+  provider: 'الجهة', eligibility: 'الأهلية', applyPeriod: 'فترة التقديم', applyOfficial: 'التقديم على موقع الجهة', upcoming: 'قادمة', openState: 'متاحة', closedState: 'منتهية',
+  phaseTwo: 'المرحلة الثانية', allFields: 'كل المجالات',
+  newLecture: 'محاضرة جديدة', lectureTitle: 'عنوان المحاضرة', lectureBody: 'محتوى المحاضرة', aiSource: 'مسموح كمصدر لمساعد الدراسة', publishNow: 'نشر الآن',
+  draft: 'مسودة', published: 'منشورة', uploadFiles: 'رفع ملفات', allowedFiles: 'PDF, PPTX, DOCX, PNG, JPG, TXT, ZIP – حتى 20 ميجابايت',
+  addExercise: 'إضافة تدريب', question: 'السؤال', choices: 'الاختيارات (سطر لكل اختيار)', correctIndex: 'رقم الاختيار الصحيح (يبدأ من 1)', feedback: 'تغذية راجعة',
+  enrolled: 'المسجلون', proposeChange: 'اقتراح تعديل موعد أو قاعة', newDay: 'اليوم الجديد', start: 'من', end: 'إلى', newRoom: 'القاعة الجديدة', reason: 'السبب',
+  checkConflicts: 'فحص التعارضات', noConflicts: 'لا توجد تعارضات.', conflicts: 'تعارضات', submitRequest: 'إرسال للاعتماد', approve: 'اعتماد', approved: 'معتمد', status: 'الحالة',
+  approvalNote: 'لا يُبلَّغ الطلاب إلا بعد اعتماد الإدارة للتعديل.', current: 'الحالي', proposed: 'المقترح', requestedBy: 'مقدم الطلب',
+  students: 'الطلاب', pendingChanges: 'طلبات معلقة', failedEmails: 'رسائل فشل إرسالها', unanswered: 'أسئلة بلا إجابة', registrations: 'تسجيلات الفصل الحالي',
+  minCredits: 'الحد الأدنى للساعات', maxCredits: 'الحد الأقصى للساعات', maxTeam: 'أقصى حجم للفريق', opensAt: 'يفتح في', closesAt: 'يغلق في',
+  resultsPublished: 'النتائج منشورة', searchStudents: 'ابحث بالاسم أو الرقم الجامعي', record: 'السجل', changeGrade: 'تعديل التقدير',
+  reasonRequired: 'سبب التعديل (إلزامي ويُسجل في سجل التدقيق)', category: 'التصنيف', source: 'المصدر', archive: 'أرشفة', unarchive: 'إلغاء الأرشفة',
+  audience: 'الجمهور', all: 'الجميع', kind: 'النوع', alsoEmail: 'إرسال بريد أيضًا', dedupe: 'مفتاح منع التكرار', recipients: 'عدد المستلمين',
+  actor: 'المنفذ', action: 'الإجراء', entity: 'الكيان', when: 'الوقت', retryFailed: 'إعادة إرسال الفاشل',
+  notFound: 'الصفحة غير موجودة', forbidden: 'ليس لديك صلاحية لهذه الصفحة',
+  heroTitle: 'كل خدماتك الجامعية في مكان واحد', heroText: 'جامعي يجمع الجدول والدرجات والتسجيل والمحاضرات والإشعارات ودليل الجامعة وفرق المشاريع في منصة واحدة، بدل التنقل بين البوابة ومجموعات واتساب وقنوات التعلم.',
+  getStarted: 'ابدأ الآن', exploreGuide: 'جرّب دليل الجامعة',
+  problemTitle: 'المشكلة', problemText: 'معلومات الطالب موزعة بين البوابة الجامعية ومجموعات التواصل وقنوات التعلم، فيصعب متابعة تغييرات المواعيد والمحاضرات والتسجيل وتكوين الفرق.',
+  solutionTitle: 'الحل', solutionText: 'منصة ويب موحدة ومتجاوبة بلوحات مخصصة للطالب وعضو هيئة التدريس والإدارة، مع مساعد دراسة مقيد بمصادر المقرر وإشعارات موجهة.',
+  aboutText: 'جامعي مشروع تخرج مقترح لجامعة الإسماعيلية الجديدة الأهلية (NINU). هذه النسخة نموذج أولي يعمل ببيانات تجريبية، وليست مربوطة رسميًا بأنظمة الجامعة.',
+  phase1: 'المرحلة الأولى', svcAcademic: 'الملخص الأكاديمي', svcAcademicD: 'الدرجات والمعدل والمقررات والجدول وأماكن القاعات.',
+  svcReg: 'تسجيل المقررات', svcRegD: 'تسجيل وحذف وفق المتطلبات والساعات والتعارضات والمواعيد.', svcLearn: 'التعلم ومساعد الدراسة',
+  svcLearnD: 'محاضرات وملفات وتدريبات ومساعد يجيب من المحاضرات مع ذكر المصدر.', svcNotif: 'الإشعارات الذكية', svcNotifD: 'تغييرات المواعيد والمحاضرات الجديدة ومواعيد التسجيل والرسوم.',
+  svcGuide: 'دليل الجامعة والخريطة', svcGuideD: 'إجابات معتمدة وأماكن المباني والقاعات مع إرشادات نصية.', svcTeams: 'فرق المشاريع',
+  svcTeamsD: 'أنشئ فريقك، ابحث عن زملاء، وأدر طلبات الانضمام.', svcCareer: 'المسارات المهنية', svcCareerD: 'فرص تدريب وعمل مع الروابط الرسمية.',
+};
+
+type Dict = typeof ar;
+const en: Dict = {
+  brand: 'GAM3EY', university: 'New Ismailia National University', universityShort: 'NINU', uniSince: 'A national university established in 2022', campusTitle: 'A modern campus deserves modern digital services', campusText: 'GAM3EY is a proposed prototype that unifies the digital services of New Ismailia National University students, faculty and administration in one place.', v1: 'core services', v2: 'documented workflows', v3: 'role dashboards', v4: 'Arabic / English', welcomeBack: 'Welcome to your university portal', officialLinks: 'Official links', rights: 'All rights reserved', officialSite: 'Official university website', eServices: 'Current electronic services', complaints: 'Inquiries and complaints', cnu: 'University page at the Council of National Universities', facts: 'Quick facts', fact1: 'Presidential Decree No. 427 of 2022', fact2: '29 feddans on the east bank of the Suez Canal', fact3: '8 faculties in 3 academic sectors', fact4: 'Emerged from Suez Canal University', officialNote: 'External links to official websites; GAM3EY is a prototype and is not an official university service.', loginSub: 'Sign in with your university account to reach your services.', tagline: 'The smart unified university portal',
+  home: 'Home', about: 'About', services: 'Services', guide: 'Campus guide', login: 'Sign in', logout: 'Sign out',
+  dashboard: 'Dashboard', overview: 'Academic overview', registration: 'Course registration', courses: 'My courses', allCourses: 'Courses', notifications: 'Notifications',
+  teams: 'Project teams', careers: 'Career & skills', myTeams: 'My team & requests', newTeam: 'Create a team',
+  facultyHome: 'My teaching', changeRequests: 'Schedule change requests', adminHome: 'Administration', terms: 'Terms & settings',
+  records: 'Academic records', kb: 'Knowledge base', locations: 'Locations & map', announce: 'Announcements', audit: 'Audit log', outbox: 'Email outbox',
+  loading: 'Loading…', empty: 'Nothing to show yet.', error: 'Something went wrong', retry: 'Retry', save: 'Save', cancel: 'Cancel',
+  confirm: 'Confirm', back: 'Back', search: 'Search', send: 'Send', close: 'Close', open: 'Open', edit: 'Edit', publish: 'Publish', preview: 'Preview',
+  demoBanner: 'Demo version: all data shown is labelled demo data, not real university records.',
+  identifier: 'University ID or university email', password: 'Password', showPassword: 'Show', hidePassword: 'Hide',
+  forgot: 'Forgot your password?', forgotTitle: 'Account recovery', sendLink: 'Send reset link', newPassword: 'New password',
+  resetTitle: 'Set a new password', passwordRule: 'At least 8 characters with a letter and a digit',
+  demoAccounts: 'Demo accounts', demoPassword: 'Password for every demo account',
+  student: 'Student', faculty: 'Faculty member', admin: 'Administration',
+  universityId: 'University ID', major: 'Major', year: 'Year', term: 'Term', cgpa: 'Cumulative GPA', termGpa: 'Term GPA',
+  earned: 'Credits earned', credits: 'cr', creditHours: 'Credit hours', grade: 'Grade', schedule: 'Timetable', location: 'Location',
+  lastUpdated: 'Last updated', resultsHidden: 'Results for this term are not published yet.', showOnMap: 'On map', instructor: 'Instructor', day: 'Day', time: 'Time',
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  regWindow: 'Registration window', regOpen: 'Open', regClosed: 'Closed', until: 'until', dropDeadline: 'Drop deadline',
+  available: 'Available', registered: 'Registered', passed: 'Passed', full: 'Full', prerequisite_missing: 'Missing prerequisite',
+  seatsLeft: 'seats left', select: 'Select', selected: 'Selected', checkSelection: 'Check selection', confirmRegistration: 'Confirm registration',
+  selectionOk: 'Your selection is valid. Review it, then confirm.', totalAfter: 'Total credit hours after registration', currentlyRegistered: 'Registered courses',
+  drop: 'Drop course', dropTitle: 'Confirm dropping the course', dropImpact: 'Credit hours will become', belowMin: 'below the minimum', dropConfirm: 'Yes, drop the course',
+  limits: 'Minimum and maximum',
+  lectures: 'Lectures', week: 'Week', attachments: 'Files', exercises: 'Optional exercises', download: 'Download', checkAnswer: 'Check answer',
+  correct: 'Correct', wrong: 'Not correct', modelAnswer: 'Model answer', notGraded: 'Practice never affects official grades.',
+  assistant: 'Study assistant', assistantHint: 'Ask about this course. Answers come only from published lectures, with sources.',
+  askPlaceholder: 'Type your question…', sources: 'Sources', summary: 'Summarise lecture', insufficient: 'Not enough evidence', clarify: 'Needs clarification',
+  modeLlm: 'Language model', modeExtractive: 'Direct retrieval from lectures',
+  markAllRead: 'Mark all as read', unread: 'Unread', emailStatus: 'Email',
+  guideAsk: 'Ask the campus guide', guidePlaceholder: 'e.g. How do I request an enrollment letter?', findPlace: 'Find a building, hall or lab', directions: 'Directions',
+  floor: 'Floor', building: 'Building', mapNote: 'Illustrative demo campus map.', reviewedOn: 'Reviewed on', contact: 'Contact',
+  teamTitle: 'Team name', description: 'Description', targetSize: 'Target size (including owner)', roles: 'Roles needed', skills: 'Skills',
+  ownerRole: 'Your role', commaHint: 'Separate with commas', members: 'Members', requestJoin: 'Request to join', yourRole: 'Role you want',
+  message: 'About your skills', pending: 'Pending', accepted: 'Accepted', rejected: 'Rejected', cancelled: 'Cancelled', accept: 'Accept', reject: 'Reject',
+  recruiting: 'Recruiting', closed: 'Closed', closeRecruiting: 'Close recruitment', openRecruiting: 'Open recruitment', ownedTeams: 'Teams I own',
+  memberOf: 'Teams I belong to', myRequests: 'My requests', requests: 'Join requests', leave: 'Leave team', owner: 'Owner',
+  provider: 'Provider', eligibility: 'Eligibility', applyPeriod: 'Application period', applyOfficial: 'Apply on the provider site', upcoming: 'Upcoming', openState: 'Open', closedState: 'Closed',
+  phaseTwo: 'Phase two', allFields: 'All fields',
+  newLecture: 'New lecture', lectureTitle: 'Lecture title', lectureBody: 'Lecture content', aiSource: 'Allowed as a study-assistant source', publishNow: 'Publish now',
+  draft: 'Draft', published: 'Published', uploadFiles: 'Upload files', allowedFiles: 'PDF, PPTX, DOCX, PNG, JPG, TXT, ZIP – up to 20 MB',
+  addExercise: 'Add exercise', question: 'Question', choices: 'Choices (one per line)', correctIndex: 'Correct choice number (from 1)', feedback: 'Feedback',
+  enrolled: 'Enrolled', proposeChange: 'Propose a time or room change', newDay: 'New day', start: 'From', end: 'To', newRoom: 'New room', reason: 'Reason',
+  checkConflicts: 'Check conflicts', noConflicts: 'No conflicts.', conflicts: 'Conflicts', submitRequest: 'Send for approval', approve: 'Approve', approved: 'Approved', status: 'Status',
+  approvalNote: 'Students are notified only after administration approves the change.', current: 'Current', proposed: 'Proposed', requestedBy: 'Requested by',
+  students: 'Students', pendingChanges: 'Pending requests', failedEmails: 'Failed emails', unanswered: 'Unanswered questions', registrations: 'Current-term registrations',
+  minCredits: 'Minimum credit hours', maxCredits: 'Maximum credit hours', maxTeam: 'Maximum team size', opensAt: 'Opens at', closesAt: 'Closes at',
+  resultsPublished: 'Results published', searchStudents: 'Search by name or university ID', record: 'Record', changeGrade: 'Change grade',
+  reasonRequired: 'Reason (required, written to the audit log)', category: 'Category', source: 'Source', archive: 'Archive', unarchive: 'Unarchive',
+  audience: 'Audience', all: 'Everyone', kind: 'Type', alsoEmail: 'Also send email', dedupe: 'De-duplication key', recipients: 'Recipients',
+  actor: 'Actor', action: 'Action', entity: 'Entity', when: 'When', retryFailed: 'Retry failed',
+  notFound: 'Page not found', forbidden: 'You do not have access to this page',
+  heroTitle: 'All your university services in one place', heroText: 'GAM3EY brings timetables, grades, registration, lectures, notifications, the campus guide and project teams into one platform, instead of jumping between the portal, WhatsApp groups and learning channels.',
+  getStarted: 'Get started', exploreGuide: 'Try the campus guide',
+  problemTitle: 'The problem', problemText: 'Student information is scattered across the university portal, chat groups and learning channels, so schedule changes, lectures, registration and team building are hard to follow.',
+  solutionTitle: 'The solution', solutionText: 'One responsive web platform with dashboards for students, faculty and administration, a study assistant limited to course sources, and targeted notifications.',
+  aboutText: 'GAM3EY is a proposed graduation project for New Ismailia National University (NINU). This version is a working prototype on demo data and is not officially connected to university systems.',
+  phase1: 'Phase one', svcAcademic: 'Academic overview', svcAcademicD: 'Grades, GPA, courses, timetable and room locations.',
+  svcReg: 'Course registration', svcRegD: 'Register and drop with prerequisite, credit, conflict and deadline checks.', svcLearn: 'Learning & study assistant',
+  svcLearnD: 'Lectures, files, exercises and an assistant that answers from lectures with sources.', svcNotif: 'Smart notifications', svcNotifD: 'Schedule changes, new lectures, registration and tuition dates.',
+  svcGuide: 'Campus guide & map', svcGuideD: 'Approved answers and building, hall and lab locations with directions.', svcTeams: 'Project teams',
+  svcTeamsD: 'Create a team, find teammates and manage join requests.', svcCareer: 'Career & skills', svcCareerD: 'Training and job opportunities with official links.',
+};
+
+const dicts = { ar, en };
+interface I18n { lang: Lang; t: Dict; setLang: (l: Lang) => void; L: (o: any, field: string) => string; fmtDate: (d: string | Date | null) => string }
+const Ctx = createContext<I18n>(null as any);
+
+export function I18nProvider({ children }: { children: ReactNode }) {
+  const [lang, setLangState] = useState<Lang>(() => { try { return (localStorage.getItem('gam3ey.lang') as Lang) || 'ar'; } catch { return 'ar'; } });
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.title = lang === 'ar' ? 'جامعي | جامعة الإسماعيلية الجديدة الأهلية' : 'GAM3EY | New Ismailia National University';
+  }, [lang]);
+  const setLang = (l: Lang) => { setLangState(l); try { localStorage.setItem('gam3ey.lang', l); } catch { /* ignore */ } };
+  const L = (o: any, field: string) => (o ? o[`${field}_${lang}`] ?? o[`${field}_en`] ?? '' : '');
+  const fmtDate = (d: string | Date | null) => d ? new Date(d).toLocaleString(lang === 'ar' ? 'ar-EG' : 'en-GB', { dateStyle: 'medium', timeStyle: 'short' }) : '—';
+  return <Ctx.Provider value={{ lang, t: dicts[lang], setLang, L, fmtDate }}>{children}</Ctx.Provider>;
+}
+export const useI18n = () => useContext(Ctx);

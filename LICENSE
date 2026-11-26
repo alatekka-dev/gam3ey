@@ -1,0 +1,38 @@
+Copyright (c) 2026 TechFury-commits. All rights reserved.
+
+GAM3EY (جامعي) – Smart Unified University Portal, graduation project.
+
+This source code, its documentation and its original design are the exclusive
+property of the copyright holder. The repository is published for viewing and
+academic evaluation only.
+
+Without prior written permission from the copyright holder, no one may:
+  - copy, reproduce, modify, merge or translate any part of this work;
+  - distribute, sublicense, publish or sell it, or any derivative work;
+  - use it, in whole or in part, in another product, service or project.
+
+Viewing the repository on GitHub and running it locally for the purpose of
+evaluating the graduation project is permitted.
+
+Third-party material is not covered by this notice:
+  - The name, logo and photographs of New Ismailia National University (NINU)
+    in client/public/brand/ belong to the university and are used only to
+    present this academic prototype. They are not licensed by this repository.
+  - Open-source dependencies listed in package.json files remain under their
+    own licences.
+
+THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. IN NO EVENT SHALL
+THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
+ARISING FROM THE USE OF THE WORK.
+
+GAM3EY is an academic prototype running on fictional demo data. It is not an
+official service of New Ismailia National University or Suez Canal University.
+
+-------------------------------------------------------------------------------
+حقوق النشر © 2026 TechFury-commits. جميع الحقوق محفوظة.
+
+هذا الكود والتوثيق والتصميم ملك حصري لصاحب الحقوق، ومنشور للاطلاع والتقييم
+الأكاديمي فقط. لا يجوز نسخه أو تعديله أو إعادة نشره أو بيعه أو استخدامه في
+مشروع آخر، كليًا أو جزئيًا، دون إذن كتابي مسبق.
+اسم وشعار وصور جامعة الإسماعيلية الجديدة الأهلية ملك للجامعة ومستخدمة فقط
+لعرض هذا النموذج الأكاديمي، ولا تشملها هذه الرخصة.
