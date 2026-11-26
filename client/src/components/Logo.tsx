@@ -1,11 +1,32 @@
-/** Animated New Ismailia National University logo (ring, shine, float). Motion stops under prefers-reduced-motion. */
+/**
+ * Animated New Ismailia National University logo.
+ * The official logo is split into layers (scripts/split-logo.py) so its parts move independently:
+ * the ship scene bobs inside the porthole, the waves drift, the olive branches sway, light runs
+ * around the gold ring and sweeps across the emblem. Everything stops under prefers-reduced-motion.
+ */
 import { useI18n } from '../i18n';
+
+const L = '/brand/logo/';
 
 export function AnimatedLogo({ size = 'lg', label }: { size?: 'sm' | 'lg'; label?: string }) {
   const { t } = useI18n();
   return (
-    <span className={`logo-anim ${size === 'sm' ? 'sm' : ''}`} role="img" aria-label={label ?? t.university}>
-      <span className="logo-core"><img src="/brand/ninu-logo-192.png" alt="" width={192} height={192} /><span className="logo-shine" aria-hidden /></span>
+    <span className={`nl ${size === 'sm' ? 'nl-sm' : 'nl-lg'}`} role="img" aria-label={label ?? t.university}>
+      <span className="nl-halo" aria-hidden />
+      <span className="nl-disc" aria-hidden />
+      <span className="nl-art" aria-hidden>
+        <span className="nl-glow" />
+        <span className="nl-porthole">
+          <img className="nl-scene" src={`${L}scene.webp`} alt="" draggable={false} />
+          <span className="nl-sunlight" />
+        </span>
+        <img className="nl-base" src={`${L}base.webp`} alt="" draggable={false} />
+        <span className="nl-ring-light" />
+        <img className="nl-waves" src={`${L}waves.webp`} alt="" draggable={false} />
+        <img className="nl-leaf nl-leaf-l" src={`${L}leaves-left.webp`} alt="" draggable={false} />
+        <img className="nl-leaf nl-leaf-r" src={`${L}leaves-right.webp`} alt="" draggable={false} />
+        <span className="nl-sweep" />
+      </span>
     </span>);
 }
 

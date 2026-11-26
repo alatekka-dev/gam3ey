@@ -116,7 +116,7 @@ export function Login() {
   return (
     <div className="auth-shell">
       <div className="auth-photo" style={{ backgroundImage: 'url(/brand/campus-3.jpg)' }}>
-        <div><img src="/brand/ninu-logo-192.png" alt="" /><h2>{t.welcomeBack}</h2><p>{t.university}</p></div>
+        <div><AnimatedLogo /><h2>{t.welcomeBack}</h2><p>{t.university}</p></div>
       </div>
       <div className="auth-side">
       <form className="card auth-card" onSubmit={submit} noValidate>
